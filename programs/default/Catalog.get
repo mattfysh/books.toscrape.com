@@ -1,0 +1,18 @@
+inputs { page? }
+
+GET https://books.toscrape.com/$[catalogue/page-$page.html]
+
+extract {
+  books: {
+    items: => ol.row li -> @Book({
+      @link: h3 a
+      title: h3 a -> xpath:@title
+      img: .image_container img -> @link
+    })
+
+    pager: {
+      prev: @Catalog) li.previous a
+      next: @Catalog) li.next a
+    }
+  }
+}

@@ -1,0 +1,12 @@
+type Catalog {
+  url: ProgramUrl
+  books: [Book] @pager
+}
+
+type Book {
+  url: ProgramUrl
+  url: String @template(t: "")
+  slug: String @key
+  title: String
+  img: String
+}

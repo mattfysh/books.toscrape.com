@@ -1,0 +1,5 @@
+inputs { slug }
+
+GET https://books.toscrape.com/catalogue/:slug/index.html
+
+extract {}
